@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import './Home.css'
-import { StyledFirebaseAuth } from 'react-firebaseui'
-import firebase from '../firebase/firebase'
-import LoadingScreen from './LoadingScreen'
+import React, { useState, useEffect } from 'react';
+import './Home.css';
+import { StyledFirebaseAuth } from 'react-firebaseui';
+import firebase from '../firebase/firebase';
+import LoadingScreen from './LoadingScreen';
 
 const Home = ({ setUser }) => {
-	const [loading, setLoading] = useState(true)
+	const [loading, setLoading] = useState(true);
 	var uiConfig = {
 		signInflow: 'popup',
 		signInOptions: [
@@ -16,9 +16,9 @@ const Home = ({ setUser }) => {
 		callbacks: {
 			signInSuccessWithAuthResult: () => false,
 		},
-	}
+	};
 	useEffect(() => {
-		let isMounted = true
+		let isMounted = true;
 		firebase.auth().onAuthStateChanged((user) => {
 			// setIsLoggedIn(!!user)
 			if (user && isMounted) {
@@ -26,17 +26,17 @@ const Home = ({ setUser }) => {
 					uid: firebase.auth().currentUser.uid,
 					name: firebase.auth().currentUser.displayName,
 					email: firebase.auth().currentUser.email,
-				})
-				console.log('User Logged In')
+				});
+				console.log('User Logged In');
 			} else {
-				console.log('User Signed Out')
-				setUser({})
+				console.log('User Signed Out');
+				setUser({});
 			}
-			console.log('auth change')
-			if (isMounted) setLoading(false)
-		})
-		return () => (isMounted = false)
-	}, [setUser])
+			console.log('auth change');
+			if (isMounted) setLoading(false);
+		});
+		return () => (isMounted = false);
+	}, [setUser]);
 	return (
 		<>
 			{loading ? (
@@ -45,12 +45,11 @@ const Home = ({ setUser }) => {
 				<div id='Home'>
 					<div id='logo'>
 						<div id='logo-name'>
-							<b>Quiz</b>dom
+							<b>Quiz</b>app
 						</div>
 						<div id='description'>
-							Now create and join quiz at a single platform.You can create
-							trivia quizzes, personality test, polls and survays. Share out
-							your quiz with your students with a unique code.
+							Now create and join quiz at a single platform.You can create trivia quizzes, personality test, polls and survays. Share
+							out your quiz with your students with a unique code.
 						</div>
 					</div>
 
@@ -58,16 +57,12 @@ const Home = ({ setUser }) => {
 						<label className='login-label'>
 							<b>Q</b>
 						</label>
-						<StyledFirebaseAuth
-							borderRadius='40px'
-							uiConfig={uiConfig}
-							firebaseAuth={firebase.auth()}
-						/>
+						<StyledFirebaseAuth borderRadius='40px' uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
 					</div>
 				</div>
 			)}
 		</>
-	)
-}
+	);
+};
 
-export default Home
+export default Home;
