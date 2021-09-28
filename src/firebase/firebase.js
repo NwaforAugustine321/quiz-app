@@ -1,17 +1,23 @@
 import firebase from 'firebase';
 
-var firebaseConfig = {
-    apiKey: "AIzaSyANZi6Xc7B1_14-RfEJ7KV9b9nkcZL2DqY",
-    authDomain: "quizdom-70da5.firebaseapp.com",
-    projectId: "quizdom-70da5",
-    storageBucket: "quizdom-70da5.appspot.com",
-    messagingSenderId: "706147557425",
-    appId: "1:706147557425:web:40f7062e5aee9a84743510",
-    measurementId: "G-RE88729T4B"
-  };
-  
+const firebaseConfig = {
+	apiKey: 'AIzaSyBszjnI3gtW8gW21bCWWp2MOCP8UeGRWas',
+
+	authDomain: 'quiz-app-ecaf8.firebaseapp.com',
+
+	projectId: 'quiz-app-ecaf8',
+
+	storageBucket: 'quiz-app-ecaf8.appspot.com',
+
+	messagingSenderId: '12858741833',
+
+	appId: '1:12858741833:web:2728ef6a4287e830415b98',
+
+	measurementId: 'G-B9ZQ8WM671',
+};
+
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
-firebase.auth()
+firebase.auth();
 
 export default firebase;
